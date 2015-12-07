@@ -7,7 +7,7 @@ package com.api.business.bean;
 public class Project {
 	
 //	id
-	private String id;
+	private String uuid;
 //	拟融资额
 	private String expectedFinance;
 //	拟融资期限
@@ -75,11 +75,11 @@ public class Project {
 	public void setPartner(String partner) {
 		this.partner = partner;
 	}
-	public String getId() {
-		return id;
+	public String getUuid() {
+		return uuid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	public String getExpectedFinance() {
 		return expectedFinance;
