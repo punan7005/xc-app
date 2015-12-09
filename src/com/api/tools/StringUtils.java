@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 public class StringUtils {
 	
+	private static final char SEPARATOR = '_';
 	
 	public static String toPath(String date){
 		StringBuffer result = new StringBuffer();
@@ -115,7 +116,7 @@ public class StringUtils {
 	 * 
 	 * <p>作者:jokerPu</p> 
 	 * <p>功能描述:是否包含传入的字符串</p>
-	 * <p>创建时间:2015-02-03 11:25:00</p>
+	 * <p>创建时间:2015-02-03</p>
 	 * <p>@param str
 	 * <p>@return</p>
 	 * <p>修改:</p>
@@ -128,7 +129,7 @@ public class StringUtils {
 	 * 
 	 * <p>作者:jokerPu</p> 
 	 * <p>功能描述:获取6位时间的年份</p>
-	 * <p>创建时间:2015-02-03 11:25:00</p>
+	 * <p>创建时间:2015-02-03</p>
 	 * <p>@param str
 	 * <p>@return</p>
 	 * <p>修改:</p>
@@ -142,7 +143,7 @@ public class StringUtils {
 	 * 
 	 * <p>作者:jokerPu</p> 
 	 * <p>功能描述:获取6位时间的月份，各位去0</p>
-	 * <p>创建时间:2015-02-03 11:25:00</p>
+	 * <p>创建时间:2015-02-03</p>
 	 * <p>@param str
 	 * <p>@return</p>
 	 * <p>修改:</p>
@@ -159,8 +160,96 @@ public class StringUtils {
 		return month;
 	}
 	
+	/**
+	 * 
+	 * <p>作者:jokerPu</p> 
+	 * <p>功能描述:驼峰转下划线</p>
+	 * <p>创建时间:2015-12-09</p>
+	 * <p>@param str
+	 * <p>@return</p>
+	 * <p>修改:</p>
+	 */
+	public static String toUnderlineName(String s) {
+        if (s == null) {
+            return null;
+        }
+ 
+        StringBuilder sb = new StringBuilder();
+        boolean upperCase = false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+ 
+            boolean nextUpperCase = true;
+ 
+            if (i < (s.length() - 1)) {
+                nextUpperCase = Character.isUpperCase(s.charAt(i + 1));
+            }
+ 
+            if ((i >= 0) && Character.isUpperCase(c)) {
+                if (!upperCase || !nextUpperCase) {
+                    if (i > 0) sb.append(SEPARATOR);
+                }
+                upperCase = true;
+            } else {
+                upperCase = false;
+            }
+ 
+            sb.append(Character.toLowerCase(c));
+        }
+ 
+        return sb.toString();
+    }
+ 
+	/**
+	 * 
+	 * <p>作者:jokerPu</p> 
+	 * <p>功能描述:下划线转驼峰</p>
+	 * <p>创建时间:2015-12-09</p>
+	 * <p>@param str
+	 * <p>@return</p>
+	 * <p>修改:</p>
+	 */
+    public static String toCamelCase(String s) {
+        if (s == null) {
+            return null;
+        }
+ 
+        s = s.toLowerCase();
+ 
+        StringBuilder sb = new StringBuilder(s.length());
+        boolean upperCase = false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+ 
+            if (c == SEPARATOR) {
+                upperCase = true;
+            } else if (upperCase) {
+                sb.append(Character.toUpperCase(c));
+                upperCase = false;
+            } else {
+                sb.append(c);
+            }
+        }
+ 
+        return sb.toString();
+    }
+ 
+    public static String toCapitalizeCamelCase(String s) {
+        if (s == null) {
+            return null;
+        }
+        s = toCamelCase(s);
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
 	public static void main(String[] args){
-		System.out.println(StringUtils.getDecimalToFraction("2.1"));
+//		System.out.println(StringUtils.getDecimalToFraction("2.1"));
+		System.out.println(StringUtils.toUnderlineName("ISOCertifiedStaff"));
+        System.out.println(StringUtils.toUnderlineName("CertifiedStaff"));
+        System.out.println(StringUtils.toUnderlineName("UserID"));
+        System.out.println(StringUtils.toCamelCase("iso_certified_staff"));
+        System.out.println(StringUtils.toCamelCase("certified_staff"));
+        System.out.println(StringUtils.toCamelCase("user_id"));
+        System.out.println(StringUtils.toUnderlineName("User"));
 	}
 	
 	

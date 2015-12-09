@@ -97,6 +97,16 @@ public class DateTools {
 		return date;
 	}
 	
+	/**
+	* 方法说明  获取当前日期时间   
+	* @author joker
+	* @param @param currMonth
+	* @param @return        
+	 */
+	public static String getDateTime() {
+		return null;
+	}
+	
 	public static void main(String[] args){
 		System.out.println(DateTools.StringToDate("2016年5月7日", "yyyy年mm月dd日"));
 	}

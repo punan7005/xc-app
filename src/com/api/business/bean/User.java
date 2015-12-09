@@ -8,7 +8,7 @@ public class User {
 //	id
 	private String uuid;
 //	姓名
-	private String Name;
+	private String name;
 //	密码
 	private String passWord;
 //	性别（0：男；1：女）
@@ -36,6 +36,13 @@ public class User {
 //	用户类型(0：业务员；1：银行人员；2：客户)
 	private int type;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getUuid() {
 		return uuid;
 	}
@@ -77,12 +84,6 @@ public class User {
 	}
 	public void setUpdateId(String updateId) {
 		this.updateId = updateId;
-	}
-	public String getName() {
-		return Name;
-	}
-	public void setName(String name) {
-		Name = name;
 	}
 	public String getPassWord() {
 		return passWord;

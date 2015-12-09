@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="com.api.business.bean.Project">
+
+  <typeAlias alias="project" type="com.api.business.bean.Project"/>
+
+  <resultMap id="projectResult" class="project">
+    <result property="age" column="age"/><!-- int -->
+    <result property="carMonthlyPayments" column="car_monthly_payments"/><!-- String -->
+    <result property="carType" column="car_type"/><!-- int -->
+    <result property="commonType" column="common_type"/><!-- int -->
+    <result property="community" column="community"/><!-- String -->
+    <result property="company" column="company"/><!-- String -->
+    <result property="createId" column="create_id"/><!-- String -->
+    <result property="createTime" column="create_time"/><!-- String -->
+    <result property="expectedFinance" column="expected_finance"/><!-- String -->
+    <result property="expectedFinanceTime" column="expected_finance_time"/><!-- String -->
+    <result property="expectedFinanceType" column="expected_finance_type"/><!-- int -->
+    <result property="floorSpace" column="floor_space"/><!-- String -->
+    <result property="houseType" column="house_type"/><!-- int -->
+    <result property="houseUse" column="house_use"/><!-- int -->
+    <result property="isHaveCar" column="is_have_car"/><!-- int -->
+    <result property="isHaveHouse" column="is_have_house"/><!-- int -->
+    <result property="isHaveOtherHouse" column="is_have_other_house"/><!-- int -->
+    <result property="isPledge" column="is_pledge"/><!-- int -->
+    <result property="otherSubsidy" column="other_subsidy"/><!-- String -->
+    <result property="partner" column="partner"/><!-- String -->
+    <result property="providentFund" column="provident_fund"/><!-- String -->
+    <result property="registTime" column="regist_time"/><!-- String -->
+    <result property="sex" column="sex"/><!-- int -->
+    <result property="socialSecurity" column="social_security"/><!-- String -->
+    <result property="status" column="status"/><!-- int -->
+    <result property="thisWorkTime" column="this_work_time"/><!-- String -->
+    <result property="updateId" column="update_id"/><!-- String -->
+    <result property="updateTime" column="update_time"/><!-- String -->
+    <result property="userName" column="user_name"/><!-- String -->
+    <result property="uuid" column="id"/><!-- String -->
+    <result property="workType" column="work_type"/><!-- int -->
+  </resultMap>
+
+  <select id="selectById" resultMap="projectResult">
+    select * from tb_project
+		<dynamic prepend="where">
+			<isParameterPresent>
+				id = #value#
+			</isParameterPresent>
+		</dynamic>
+  </select>
+
+  <select id="selectByMap" resultMap="projectResult">
+    select * from tb_project
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="age">
+				age = #age#
+			</isNotNull>
+			<isNotNull prepend="and" property="carMonthlyPayments">
+				car_monthly_payments = #carMonthlyPayments#
+			</isNotNull>
+			<isNotNull prepend="and" property="carType">
+				car_type = #carType#
+			</isNotNull>
+			<isNotNull prepend="and" property="commonType">
+				common_type = #commonType#
+			</isNotNull>
+			<isNotNull prepend="and" property="community">
+				community = #community#
+			</isNotNull>
+			<isNotNull prepend="and" property="company">
+				company = #company#
+			</isNotNull>
+			<isNotNull prepend="and" property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="and" property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="expectedFinance">
+				expected_finance = #expectedFinance#
+			</isNotNull>
+			<isNotNull prepend="and" property="expectedFinanceTime">
+				expected_finance_time = #expectedFinanceTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="expectedFinanceType">
+				expected_finance_type = #expectedFinanceType#
+			</isNotNull>
+			<isNotNull prepend="and" property="floorSpace">
+				floor_space = #floorSpace#
+			</isNotNull>
+			<isNotNull prepend="and" property="houseType">
+				house_type = #houseType#
+			</isNotNull>
+			<isNotNull prepend="and" property="houseUse">
+				house_use = #houseUse#
+			</isNotNull>
+			<isNotNull prepend="and" property="isHaveCar">
+				is_have_car = #isHaveCar#
+			</isNotNull>
+			<isNotNull prepend="and" property="isHaveHouse">
+				is_have_house = #isHaveHouse#
+			</isNotNull>
+			<isNotNull prepend="and" property="isHaveOtherHouse">
+				is_have_other_house = #isHaveOtherHouse#
+			</isNotNull>
+			<isNotNull prepend="and" property="isPledge">
+				is_pledge = #isPledge#
+			</isNotNull>
+			<isNotNull prepend="and" property="otherSubsidy">
+				other_subsidy = #otherSubsidy#
+			</isNotNull>
+			<isNotNull prepend="and" property="partner">
+				partner = #partner#
+			</isNotNull>
+			<isNotNull prepend="and" property="providentFund">
+				provident_fund = #providentFund#
+			</isNotNull>
+			<isNotNull prepend="and" property="registTime">
+				regist_time = #registTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="sex">
+				sex = #sex#
+			</isNotNull>
+			<isNotNull prepend="and" property="socialSecurity">
+				social_security = #socialSecurity#
+			</isNotNull>
+			<isNotNull prepend="and" property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="and" property="thisWorkTime">
+				this_work_time = #thisWorkTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="userName">
+				user_name = #userName#
+			</isNotNull>
+			<isNotNull prepend="and" property="uuid">
+				id = #uuid#
+			</isNotNull>
+			<isNotNull prepend="and" property="workType">
+				work_type = #workType#
+			</isNotNull>
+		</dynamic>
+		<dynamic>
+			<isNotNull prepend="order by" property="orderBy">
+				$orderBy$ $order$
+			</isNotNull>
+			<isNotNull prepend="limit" property="limit">
+				$start$,$end$
+			</isNotNull>
+		</dynamic>
+  </select>
+
+  <insert id="insert" parameterClass="project">
+       insert into tb_project
+				(
+				age,
+				car_monthly_payments,
+				car_type,
+				common_type,
+				community,
+				company,
+				create_id,
+				create_time,
+				expected_finance,
+				expected_finance_time,
+				expected_finance_type,
+				floor_space,
+				house_type,
+				house_use,
+				is_have_car,
+				is_have_house,
+				is_have_other_house,
+				is_pledge,
+				other_subsidy,
+				partner,
+				provident_fund,
+				regist_time,
+				sex,
+				social_security,
+				status,
+				this_work_time,
+				update_id,
+				update_time,
+				user_name,
+				id,
+				work_type
+				)
+				values
+				(
+				#age#,
+				#carMonthlyPayments#,
+				#carType#,
+				#commonType#,
+				#community#,
+				#company#,
+				#createId#,
+				#createTime#,
+				#expectedFinance#,
+				#expectedFinanceTime#,
+				#expectedFinanceType#,
+				#floorSpace#,
+				#houseType#,
+				#houseUse#,
+				#isHaveCar#,
+				#isHaveHouse#,
+				#isHaveOtherHouse#,
+				#isPledge#,
+				#otherSubsidy#,
+				#partner#,
+				#providentFund#,
+				#registTime#,
+				#sex#,
+				#socialSecurity#,
+				#status#,
+				#thisWorkTime#,
+				#updateId#,
+				#updateTime#,
+				#userName#,
+				#uuid#,
+				#workType#
+				)
+    <selectKey resultClass="java.lang.String" keyProperty="uuid">
+    	select last_insert_id();
+    </selectKey>
+  </insert>
+
+  <select id="count" resultClass="int">
+  		select count(*) from tb_project
+  		<dynamic prepend="where">
+			<isNotNull prepend="and" property="age">
+				age = #age#
+			</isNotNull>
+			<isNotNull prepend="and" property="carMonthlyPayments">
+				car_monthly_payments = #carMonthlyPayments#
+			</isNotNull>
+			<isNotNull prepend="and" property="carType">
+				car_type = #carType#
+			</isNotNull>
+			<isNotNull prepend="and" property="commonType">
+				common_type = #commonType#
+			</isNotNull>
+			<isNotNull prepend="and" property="community">
+				community = #community#
+			</isNotNull>
+			<isNotNull prepend="and" property="company">
+				company = #company#
+			</isNotNull>
+			<isNotNull prepend="and" property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="and" property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="expectedFinance">
+				expected_finance = #expectedFinance#
+			</isNotNull>
+			<isNotNull prepend="and" property="expectedFinanceTime">
+				expected_finance_time = #expectedFinanceTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="expectedFinanceType">
+				expected_finance_type = #expectedFinanceType#
+			</isNotNull>
+			<isNotNull prepend="and" property="floorSpace">
+				floor_space = #floorSpace#
+			</isNotNull>
+			<isNotNull prepend="and" property="houseType">
+				house_type = #houseType#
+			</isNotNull>
+			<isNotNull prepend="and" property="houseUse">
+				house_use = #houseUse#
+			</isNotNull>
+			<isNotNull prepend="and" property="isHaveCar">
+				is_have_car = #isHaveCar#
+			</isNotNull>
+			<isNotNull prepend="and" property="isHaveHouse">
+				is_have_house = #isHaveHouse#
+			</isNotNull>
+			<isNotNull prepend="and" property="isHaveOtherHouse">
+				is_have_other_house = #isHaveOtherHouse#
+			</isNotNull>
+			<isNotNull prepend="and" property="isPledge">
+				is_pledge = #isPledge#
+			</isNotNull>
+			<isNotNull prepend="and" property="otherSubsidy">
+				other_subsidy = #otherSubsidy#
+			</isNotNull>
+			<isNotNull prepend="and" property="partner">
+				partner = #partner#
+			</isNotNull>
+			<isNotNull prepend="and" property="providentFund">
+				provident_fund = #providentFund#
+			</isNotNull>
+			<isNotNull prepend="and" property="registTime">
+				regist_time = #registTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="sex">
+				sex = #sex#
+			</isNotNull>
+			<isNotNull prepend="and" property="socialSecurity">
+				social_security = #socialSecurity#
+			</isNotNull>
+			<isNotNull prepend="and" property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="and" property="thisWorkTime">
+				this_work_time = #thisWorkTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="userName">
+				user_name = #userName#
+			</isNotNull>
+			<isNotNull prepend="and" property="uuid">
+				id = #uuid#
+			</isNotNull>
+			<isNotNull prepend="and" property="workType">
+				work_type = #workType#
+			</isNotNull>
+  		</dynamic>
+  </select>
+
+  <update id="update" parameterClass="project">
+	update tb_project
+	set
+	age = #age#,
+	car_monthly_payments = #carMonthlyPayments#,
+	car_type = #carType#,
+	common_type = #commonType#,
+	community = #community#,
+	company = #company#,
+	create_id = #createId#,
+	create_time = #createTime#,
+	expected_finance = #expectedFinance#,
+	expected_finance_time = #expectedFinanceTime#,
+	expected_finance_type = #expectedFinanceType#,
+	floor_space = #floorSpace#,
+	house_type = #houseType#,
+	house_use = #houseUse#,
+	is_have_car = #isHaveCar#,
+	is_have_house = #isHaveHouse#,
+	is_have_other_house = #isHaveOtherHouse#,
+	is_pledge = #isPledge#,
+	other_subsidy = #otherSubsidy#,
+	partner = #partner#,
+	provident_fund = #providentFund#,
+	regist_time = #registTime#,
+	sex = #sex#,
+	social_security = #socialSecurity#,
+	status = #status#,
+	this_work_time = #thisWorkTime#,
+	update_id = #updateId#,
+	update_time = #updateTime#,
+	user_name = #userName#,
+	id = #uuid#,
+	work_type = #workType#
+	where
+	id = #uuid#;
+  </update>
+
+  <update id="updateByMap">
+    update tb_project
+    	<dynamic prepend="set">
+			<isNotNull prepend="," property="age">
+				age = #age#
+			</isNotNull>
+			<isNotNull prepend="," property="carMonthlyPayments">
+				car_monthly_payments = #carMonthlyPayments#
+			</isNotNull>
+			<isNotNull prepend="," property="carType">
+				car_type = #carType#
+			</isNotNull>
+			<isNotNull prepend="," property="commonType">
+				common_type = #commonType#
+			</isNotNull>
+			<isNotNull prepend="," property="community">
+				community = #community#
+			</isNotNull>
+			<isNotNull prepend="," property="company">
+				company = #company#
+			</isNotNull>
+			<isNotNull prepend="," property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="," property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="," property="expectedFinance">
+				expected_finance = #expectedFinance#
+			</isNotNull>
+			<isNotNull prepend="," property="expectedFinanceTime">
+				expected_finance_time = #expectedFinanceTime#
+			</isNotNull>
+			<isNotNull prepend="," property="expectedFinanceType">
+				expected_finance_type = #expectedFinanceType#
+			</isNotNull>
+			<isNotNull prepend="," property="floorSpace">
+				floor_space = #floorSpace#
+			</isNotNull>
+			<isNotNull prepend="," property="houseType">
+				house_type = #houseType#
+			</isNotNull>
+			<isNotNull prepend="," property="houseUse">
+				house_use = #houseUse#
+			</isNotNull>
+			<isNotNull prepend="," property="isHaveCar">
+				is_have_car = #isHaveCar#
+			</isNotNull>
+			<isNotNull prepend="," property="isHaveHouse">
+				is_have_house = #isHaveHouse#
+			</isNotNull>
+			<isNotNull prepend="," property="isHaveOtherHouse">
+				is_have_other_house = #isHaveOtherHouse#
+			</isNotNull>
+			<isNotNull prepend="," property="isPledge">
+				is_pledge = #isPledge#
+			</isNotNull>
+			<isNotNull prepend="," property="otherSubsidy">
+				other_subsidy = #otherSubsidy#
+			</isNotNull>
+			<isNotNull prepend="," property="partner">
+				partner = #partner#
+			</isNotNull>
+			<isNotNull prepend="," property="providentFund">
+				provident_fund = #providentFund#
+			</isNotNull>
+			<isNotNull prepend="," property="registTime">
+				regist_time = #registTime#
+			</isNotNull>
+			<isNotNull prepend="," property="sex">
+				sex = #sex#
+			</isNotNull>
+			<isNotNull prepend="," property="socialSecurity">
+				social_security = #socialSecurity#
+			</isNotNull>
+			<isNotNull prepend="," property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="," property="thisWorkTime">
+				this_work_time = #thisWorkTime#
+			</isNotNull>
+			<isNotNull prepend="," property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="," property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="," property="userName">
+				user_name = #userName#
+			</isNotNull>
+			<isNotNull prepend="," property="uuid">
+				id = #uuid#
+			</isNotNull>
+			<isNotNull prepend="," property="workType">
+				work_type = #workType#
+			</isNotNull>
+    	</dynamic>
+    	where id = #id#
+  </update>
+</sqlMap>
+

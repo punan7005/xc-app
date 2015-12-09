@@ -16,6 +16,8 @@
 			
 	
 	<sqlMap resource="com/api/business/bean/sqlMap/AuthToken.sqlMap.xml"/>
+	<sqlMap resource="com/api/business/bean/sqlMap/User.sqlMap.xml"/>
+	<sqlMap resource="com/api/business/bean/sqlMap/Project.sqlMap.xml"/>
 	
 	
 	<!-- <sqlMap resource="com/api/business/bean/sqlMap/Token.sqlMap.xml"/> -->

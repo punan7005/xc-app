@@ -105,7 +105,7 @@
   <update id="update" parameterClass="authToken">
 	update tb_authtoken 
 	set
-	parent_id = #parentId# , 
+	parent_id = #parentId#, 
 	start_time = #startTime#
 	where
 	id = #uuid# ;

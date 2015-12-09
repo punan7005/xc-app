@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -71,5 +73,14 @@ public class Result {
 			e.printStackTrace();
 		}
 		return json;
+	}
+	
+	public static void errorReturn(String errorCode, String errorMsg, HttpServletResponse response){
+		try {
+			response.getWriter().write(Result.toJson(false, null, errorCode, errorMsg));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="com.api.business.bean.User">
+
+  <typeAlias alias="user" type="com.api.business.bean.User"/>
+
+  <resultMap id="userResult" class="user">
+    <result property="company" column="company"/><!-- String -->
+    <result property="createId" column="create_id"/><!-- String -->
+    <result property="createTime" column="create_time"/><!-- String -->
+    <result property="idCardNo" column="id_card_no"/><!-- String -->
+    <result property="name" column="name"/><!-- String -->
+    <result property="passWord" column="pass_word"/><!-- String -->
+    <result property="phoneNo" column="phone_no"/><!-- String -->
+    <result property="sex" column="sex"/><!-- int -->
+    <result property="status" column="status"/><!-- int -->
+    <result property="title" column="title"/><!-- String -->
+    <result property="type" column="type"/><!-- int -->
+    <result property="updateId" column="update_id"/><!-- String -->
+    <result property="updateTime" column="update_time"/><!-- String -->
+    <result property="uuid" column="id"/><!-- String -->
+    <result property="workingAge" column="working_age"/><!-- String -->
+  </resultMap>
+
+  <select id="selectById" resultMap="userResult">
+    select * from tb_user
+		<dynamic prepend="where">
+			<isParameterPresent>
+				id = #value#
+			</isParameterPresent>
+		</dynamic>
+  </select>
+
+  <select id="selectByMap" resultMap="userResult">
+    select * from tb_user
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="company">
+				company = #company#
+			</isNotNull>
+			<isNotNull prepend="and" property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="and" property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="idCardNo">
+				id_card_no = #idCardNo#
+			</isNotNull>
+			<isNotNull prepend="and" property="name">
+				name = #name#
+			</isNotNull>
+			<isNotNull prepend="and" property="passWord">
+				pass_word = #passWord#
+			</isNotNull>
+			<isNotNull prepend="and" property="phoneNo">
+				phone_no = #phoneNo#
+			</isNotNull>
+			<isNotNull prepend="and" property="sex">
+				sex = #sex#
+			</isNotNull>
+			<isNotNull prepend="and" property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="and" property="title">
+				title = #title#
+			</isNotNull>
+			<isNotNull prepend="and" property="type">
+				type = #type#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="uuid">
+				id = #uuid#
+			</isNotNull>
+			<isNotNull prepend="and" property="workingAge">
+				working_age = #workingAge#
+			</isNotNull>
+		</dynamic>
+		<dynamic>
+			<isNotNull prepend="order by" property="orderBy">
+				$orderBy$ $order$
+			</isNotNull>
+			<isNotNull prepend="limit" property="limit">
+				$start$,$end$
+			</isNotNull>
+		</dynamic>
+  </select>
+
+  <insert id="insert" parameterClass="user">
+       insert into tb_user
+				(
+				company,
+				create_id,
+				create_time,
+				id_card_no,
+				name,
+				pass_word,
+				phone_no,
+				sex,
+				status,
+				title,
+				type,
+				update_id,
+				update_time,
+				id,
+				working_age
+				)
+				values
+				(
+				#company#,
+				#createId#,
+				#createTime#,
+				#idCardNo#,
+				#name#,
+				#passWord#,
+				#phoneNo#,
+				#sex#,
+				#status#,
+				#title#,
+				#type#,
+				#updateId#,
+				#updateTime#,
+				#uuid#,
+				#workingAge#
+				)
+    <selectKey resultClass="java.lang.String" keyProperty="uuid">
+    	select last_insert_id();
+    </selectKey>
+  </insert>
+
+  <select id="count" resultClass="int">
+  		select count(*) from tb_user
+  		<dynamic prepend="where">
+			<isNotNull prepend="and" property="company">
+				company = #company#
+			</isNotNull>
+			<isNotNull prepend="and" property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="and" property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="idCardNo">
+				id_card_no = #idCardNo#
+			</isNotNull>
+			<isNotNull prepend="and" property="name">
+				name = #name#
+			</isNotNull>
+			<isNotNull prepend="and" property="passWord">
+				pass_word = #passWord#
+			</isNotNull>
+			<isNotNull prepend="and" property="phoneNo">
+				phone_no = #phoneNo#
+			</isNotNull>
+			<isNotNull prepend="and" property="sex">
+				sex = #sex#
+			</isNotNull>
+			<isNotNull prepend="and" property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="and" property="title">
+				title = #title#
+			</isNotNull>
+			<isNotNull prepend="and" property="type">
+				type = #type#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="uuid">
+				id = #uuid#
+			</isNotNull>
+			<isNotNull prepend="and" property="workingAge">
+				working_age = #workingAge#
+			</isNotNull>
+  		</dynamic>
+  </select>
+
+  <update id="update" parameterClass="user">
+	update tb_user
+	set
+	company = #company#,
+	create_id = #createId#,
+	create_time = #createTime#,
+	id_card_no = #idCardNo#,
+	name = #name#,
+	pass_word = #passWord#,
+	phone_no = #phoneNo#,
+	sex = #sex#,
+	status = #status#,
+	title = #title#,
+	type = #type#,
+	update_id = #updateId#,
+	update_time = #updateTime#,
+	id = #uuid#,
+	working_age = #workingAge#
+	where
+	id = #uuid#;
+  </update>
+
+  <update id="updateByMap">
+    update tb_user
+    	<dynamic prepend="set">
+			<isNotNull prepend="," property="company">
+				company = #company#
+			</isNotNull>
+			<isNotNull prepend="," property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="," property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="," property="idCardNo">
+				id_card_no = #idCardNo#
+			</isNotNull>
+			<isNotNull prepend="," property="name">
+				name = #name#
+			</isNotNull>
+			<isNotNull prepend="," property="passWord">
+				pass_word = #passWord#
+			</isNotNull>
+			<isNotNull prepend="," property="phoneNo">
+				phone_no = #phoneNo#
+			</isNotNull>
+			<isNotNull prepend="," property="sex">
+				sex = #sex#
+			</isNotNull>
+			<isNotNull prepend="," property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="," property="title">
+				title = #title#
+			</isNotNull>
+			<isNotNull prepend="," property="type">
+				type = #type#
+			</isNotNull>
+			<isNotNull prepend="," property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="," property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="," property="uuid">
+				id = #uuid#
+			</isNotNull>
+			<isNotNull prepend="," property="workingAge">
+				working_age = #workingAge#
+			</isNotNull>
+    	</dynamic>
+    	where id = #id#
+  </update>
+</sqlMap>
+
