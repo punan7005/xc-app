@@ -10,7 +10,7 @@ public interface IUserService extends IGenericService<User, String>{
 	* 方法说明 :用户是否存在
 	* @author  joker 
 	* 创建时间：2015-12-08
-	* <p>@param user</p>
+	* <p>@param </p>
 	*/
 	public boolean isExist(String phoneNo);
 	
@@ -18,7 +18,7 @@ public interface IUserService extends IGenericService<User, String>{
 	* 方法说明 :用户登陆
 	* @author  joker 
 	* 创建时间：2015-12-08
-	* <p>@param user</p>
+	* <p>@param </p>
 	*/
 	public User login(String phoneNo, String passWord);
 	
@@ -26,7 +26,7 @@ public interface IUserService extends IGenericService<User, String>{
 	* 方法说明 :用户信息修改
 	* @author  joker 
 	* 创建时间：2015-12-08
-	* <p>@param user</p>
+	* <p>@param </p>
 	*/
 	public User modify(User user) throws Exception;
 	
@@ -34,7 +34,15 @@ public interface IUserService extends IGenericService<User, String>{
 	* 方法说明 :用户信息修改
 	* @author  joker 
 	* 创建时间：2015-12-08
-	* <p>@param user</p>
+	* <p>@param </p>
 	*/
 	public User create(String phoneNo, String passWord) throws Exception;
+	
+	/** 
+	* 方法说明 :用户信息修改
+	* @author  joker 
+	* 创建时间：2015-12-08
+	* <p>@param </p>
+	*/
+	public User get(String id);
 }

@@ -70,5 +70,12 @@ public class UserService extends GenericService<User, String> implements IUserSe
 		return rUser;
 	}
 
+	@Override
+	public User get(String id) {
+		// TODO Auto-generated method stub
+		User rUser = this.userDao.findById(id);
+		return rUser;
+	}
+
 	
 }

@@ -1,5 +1,7 @@
 package com.api.business.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +54,13 @@ public class ProjectService extends GenericService<Project, String> implements I
 		// TODO Auto-generated method stub
 		Project rProject = this.projectDao.findById(id);
 		return rProject;
+	}
+
+	@Override
+	public List<Project> getsByUser(String userId, int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		List<Project> list = this.projectDao.pageQueryBy(new String[]{"createId", "status"}, new Object[]{userId, 0}, "create_time", "desc", pageSize, pageNo);
+		return list;
 	}
 
 }

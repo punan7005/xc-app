@@ -27,7 +27,7 @@ public class UserController {
 	* 方法说明 :用户登陆
 	* @author  joker 
 	* 创建时间：2015-12-08
-	* <p>@param user</p>
+	* <p>@param </p>
 	*/
 	@RequestMapping("/user/login")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response,
@@ -56,7 +56,7 @@ public class UserController {
 	* 方法说明 :用户信息修改
 	* @author  joker 
 	* 创建时间：2015-12-08
-	* <p>@param user</p>
+	* <p>@param </p>
 	*/
 	@RequestMapping("/user/modify")
 	public ModelAndView modify(HttpServletRequest request, HttpServletResponse response, User user){
@@ -78,7 +78,7 @@ public class UserController {
 	* 方法说明 :用户注册
 	* @author  joker 
 	* 创建时间：2015-12-08
-	* <p>@param user</p>
+	* <p>@param </p>
 	*/
 	@RequestMapping("/user/regist")
 	public ModelAndView regist(HttpServletRequest request, HttpServletResponse response,
@@ -102,5 +102,26 @@ public class UserController {
 		return null;
 	}
 	
+	/** 
+	* 方法说明 :获取用户
+	* @author  joker 
+	* 创建时间：2015-12-09
+	* <p>@param </p>
+	*/
+	public ModelAndView get(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value="userId", required=true) String userId
+			){
+		try {
+			Map<String, Object> message = new HashMap<String, Object>();
+			response.setCharacterEncoding("utf-8");
+			//获取用户信息
+			User rUser = this.userService.get(userId);
+			message.put("user", rUser);
+			response.getWriter().write(Result.toJson(true, message, null, null));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
 	
 }
