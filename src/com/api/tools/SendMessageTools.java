@@ -45,8 +45,8 @@ public class SendMessageTools {
 	    String content = new String("您的验证码是：" + mobileCode + "。请不要把验证码泄露给其他人。"); 
 
 		NameValuePair[] data = {
-			    new NameValuePair("account", "cf_jokerpu"), 
-			    new NameValuePair("password", "duanxin!321"), 
+			    new NameValuePair("account", "cf_xchy"), 
+			    new NameValuePair("password", "xincheng0848"), 
 //			    new NameValuePair("password", MD5Util.getMD5String("duanxin!321")),
 			    new NameValuePair("mobile", phoneNo), 
 			    new NameValuePair("content", content),
