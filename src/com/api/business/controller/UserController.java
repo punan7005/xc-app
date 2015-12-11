@@ -83,7 +83,8 @@ public class UserController {
 	@RequestMapping("/user/regist")
 	public ModelAndView regist(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="phoneNo", required=true) String phoneNo,
-			@RequestParam(value="passWord", required=true) String passWord
+			@RequestParam(value="passWord", required=true) String passWord,
+			@RequestParam(value="type", required=true) int type
 			){
 		try {
 			Map<String, Object> message = new HashMap<String, Object>();
@@ -93,7 +94,7 @@ public class UserController {
 				Result.errorReturn("1", "用户已存在", response);
 				return null;
 			}
-			User rUser = userService.create(phoneNo, passWord);
+			User rUser = userService.create(phoneNo, passWord, type);
 			message.put("user", rUser);
 			response.getWriter().write(Result.toJson(true, message, null, null));
  		} catch (Exception e) {
@@ -108,6 +109,7 @@ public class UserController {
 	* 创建时间：2015-12-09
 	* <p>@param </p>
 	*/
+	@RequestMapping("/user/get")
 	public ModelAndView get(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="userId", required=true) String userId
 			){

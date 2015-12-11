@@ -56,7 +56,7 @@ public class UserService extends GenericService<User, String> implements IUserSe
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
-	public User create(String phoneNo, String passWord) throws Exception {
+	public User create(String phoneNo, String passWord, int type) throws Exception {
 		// TODO Auto-generated method stub
 		User create = new User();
 		String uuid = UuidFactory.getUuid();
@@ -65,6 +65,7 @@ public class UserService extends GenericService<User, String> implements IUserSe
 		create.setCreateTime(DateUtils.getDateTime());
 		create.setPhoneNo(phoneNo);
 		create.setPassWord(passWord);
+		create.setType(type);
 		this.userDao.insert(create);
 		User rUser = this.userDao.findById(uuid);
 		return rUser;

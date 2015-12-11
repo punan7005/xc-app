@@ -31,15 +31,15 @@ public interface IUserService extends IGenericService<User, String>{
 	public User modify(User user) throws Exception;
 	
 	/** 
-	* 方法说明 :用户信息修改
+	* 方法说明 :用户信息创建
 	* @author  joker 
 	* 创建时间：2015-12-08
 	* <p>@param </p>
 	*/
-	public User create(String phoneNo, String passWord) throws Exception;
+	public User create(String phoneNo, String passWord, int type) throws Exception;
 	
 	/** 
-	* 方法说明 :用户信息修改
+	* 方法说明 :用户信息获取
 	* @author  joker 
 	* 创建时间：2015-12-08
 	* <p>@param </p>

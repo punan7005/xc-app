@@ -80,6 +80,7 @@ public class ProjectController {
 	* 创建时间：2015-12-08
 	* <p>@param </p>
 	*/
+	@RequestMapping("/project/get")
 	public ModelAndView get(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="id", required=true) String id
 			){
@@ -102,7 +103,8 @@ public class ProjectController {
 	* 创建时间：2015-12-09
 	* <p>@param </p>
 	*/
-	public ModelAndView gets(HttpServletRequest request, HttpServletResponse response,
+	@RequestMapping("/project/getsByUser")
+	public ModelAndView getsByUser(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="userId", required=true) String userId,
 			@RequestParam(value="pageSize", required=false) Integer pageSize,
 			@RequestParam(value="pageNo", required=false) Integer pageNo
