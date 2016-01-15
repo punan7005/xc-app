@@ -42,6 +42,7 @@ This is to demonstrate that even complex SQL can be handled and coded and format
     <result property="userName" column="user_name"/><!-- String -->
     <result property="uuid" column="id"/><!-- String -->
     <result property="workType" column="work_type"/><!-- int -->
+    <result property="buildingAreaAssessment" column="building_area_assessment"/><!-- String -->
   </resultMap>
 
   <select id="selectById" resultMap="projectResult">
@@ -149,6 +150,9 @@ This is to demonstrate that even complex SQL can be handled and coded and format
 			<isNotNull prepend="and" property="workType">
 				work_type = #workType#
 			</isNotNull>
+			<isNotNull prepend="and" property="buildingAreaAssessment">
+				building_area_assessment = #buildingAreaAssessment#
+			</isNotNull>
 		</dynamic>
 		<dynamic>
 			<isNotNull prepend="order by" property="orderBy">
@@ -193,7 +197,8 @@ This is to demonstrate that even complex SQL can be handled and coded and format
 				update_time,
 				user_name,
 				id,
-				work_type
+				work_type,
+				building_area_assessment
 				)
 				values
 				(
@@ -227,7 +232,8 @@ This is to demonstrate that even complex SQL can be handled and coded and format
 				#updateTime#,
 				#userName#,
 				#uuid#,
-				#workType#
+				#workType#,
+				#buildingAreaAssessment#
 				)
     <selectKey resultClass="java.lang.String" keyProperty="uuid">
     	select last_insert_id();
@@ -330,6 +336,9 @@ This is to demonstrate that even complex SQL can be handled and coded and format
 			<isNotNull prepend="and" property="workType">
 				work_type = #workType#
 			</isNotNull>
+			<isNotNull prepend="and" property="buildingAreaAssessment">
+				building_area_assessment = #buildingAreaAssessment#
+			</isNotNull>
   		</dynamic>
   </select>
 
@@ -366,7 +375,8 @@ This is to demonstrate that even complex SQL can be handled and coded and format
 	update_time = #updateTime#,
 	user_name = #userName#,
 	id = #uuid#,
-	work_type = #workType#
+	work_type = #workType#,
+	building_area_assessment = #buildingAreaAssessment#
 	where
 	id = #uuid#;
   </update>
@@ -466,6 +476,9 @@ This is to demonstrate that even complex SQL can be handled and coded and format
 			</isNotNull>
 			<isNotNull prepend="," property="workType">
 				work_type = #workType#
+			</isNotNull>
+			<isNotNull prepend="," property="buildingAreaAssessment">
+				building_area_assessment = #buildingAreaAssessment#
 			</isNotNull>
     	</dynamic>
     	where id = #id#

@@ -68,7 +68,15 @@ public class Project {
 	private int status;
 //	项目参与人
 	private String partner;
+//	房屋面积评估值
+	private String buildingAreaAssessment;
 	
+	public String getBuildingAreaAssessment() {
+		return buildingAreaAssessment;
+	}
+	public void setBuildingAreaAssessment(String buildingAreaAssessment) {
+		this.buildingAreaAssessment = buildingAreaAssessment;
+	}
 	public String getPartner() {
 		return partner;
 	}

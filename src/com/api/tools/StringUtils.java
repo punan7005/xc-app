@@ -241,15 +241,52 @@ public class StringUtils {
         s = toCamelCase(s);
         return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
+    
+    /**
+	 * 
+	 * <p>作者:jokerPu</p> 
+	 * <p>功能描述:首字母小写</p>
+	 * <p>创建时间:2016-01-06</p>
+	 * <p>@param str
+	 * <p>@return</p>
+	 * <p>修改:</p>
+	 */
+    public static String toLowerCaseFirstOne(String s)
+    {
+        if(Character.isLowerCase(s.charAt(0)))
+            return s;
+        else
+            return (new StringBuilder()).append(Character.toLowerCase(s.charAt(0))).append(s.substring(1)).toString();
+    }
+    /**
+	 * 
+	 * <p>作者:jokerPu</p> 
+	 * <p>功能描述:首字母大写</p>
+	 * <p>创建时间:2016-01-06</p>
+	 * <p>@param str
+	 * <p>@return</p>
+	 * <p>修改:</p>
+	 */
+    public static String toUpperCaseFirstOne(String s)
+    {
+        if(Character.isUpperCase(s.charAt(0)))
+            return s;
+        else
+            return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
+    } 
+    
+    
 	public static void main(String[] args){
 //		System.out.println(StringUtils.getDecimalToFraction("2.1"));
-		System.out.println(StringUtils.toUnderlineName("ISOCertifiedStaff"));
-        System.out.println(StringUtils.toUnderlineName("CertifiedStaff"));
-        System.out.println(StringUtils.toUnderlineName("UserID"));
-        System.out.println(StringUtils.toCamelCase("iso_certified_staff"));
-        System.out.println(StringUtils.toCamelCase("certified_staff"));
-        System.out.println(StringUtils.toCamelCase("user_id"));
-        System.out.println(StringUtils.toUnderlineName("User"));
+//		System.out.println(StringUtils.toUnderlineName("ISOCertifiedStaff"));
+//        System.out.println(StringUtils.toUnderlineName("CertifiedStaff"));
+//        System.out.println(StringUtils.toUnderlineName("UserID"));
+//        System.out.println(StringUtils.toCamelCase("iso_certified_staff"));
+//        System.out.println(StringUtils.toCamelCase("certified_staff"));
+//        System.out.println(StringUtils.toCamelCase("user_id"));
+//        System.out.println(StringUtils.toUnderlineName("User"));
+        System.out.println(StringUtils.toLowerCaseFirstOne("UserUser"));
+        System.out.println(StringUtils.toUpperCaseFirstOne("userUser"));
 	}
 	
 	

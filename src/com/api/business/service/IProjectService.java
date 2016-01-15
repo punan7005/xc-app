@@ -37,4 +37,12 @@ public interface IProjectService extends IGenericService<Project, String>{
 	* <p>@param </p>
 	*/
 	public List<Project> getsByUser(String userId, int pageSize, int pageNo);
+	
+	/** 
+	* 方法说明 :查询所有项目
+	* @author  joker 
+	* 创建时间：2016-01-15
+	* <p>@param </p>
+	*/
+	public List<Project> gets(int pageSize, int pageNo);
 }

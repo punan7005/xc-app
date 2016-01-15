@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- The SQL in these maps files has purposely been typed with more verbosity than is actually required.
+ For example, many of the selects could have just used SELECT * FROM... instead of listing all of the columns.
+This is to demonstrate that even complex SQL can be handled and coded and formatted the way SQL was meant
+ to be (i.e. not a bunch of concatenated strings in a Java class). -->
+
+<sqlMap namespace="com.api.business.bean.UserRelation">
+
+  <typeAlias alias="user_relation" type="com.api.business.bean.UserRelation"/>
+
+  <resultMap id="user_relationResult" class="user_relation">
+    <result property="createId" column="create_id"/><!-- String -->
+    <result property="createTime" column="create_time"/><!-- String -->
+    <result property="relationId" column="relation_id"/><!-- String -->
+    <result property="relationName" column="relation_name"/><!-- String -->
+    <result property="relationPhoto" column="relation_photo"/><!-- String -->
+    <result property="status" column="status"/><!-- int -->
+    <result property="updateId" column="update_id"/><!-- String -->
+    <result property="updateTime" column="update_time"/><!-- String -->
+    <result property="userId" column="user_id"/><!-- String -->
+    <result property="uuid" column="uuid"/><!-- String -->
+  </resultMap>
+
+  <select id="selectById" resultMap="user_relationResult">
+    select * from tb_user_relation
+		<dynamic prepend="where">
+			<isParameterPresent>
+				id = #value#
+			</isParameterPresent>
+		</dynamic>
+  </select>
+
+  <select id="selectByMap" resultMap="user_relationResult">
+    select * from tb_user_relation
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="and" property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="relationId">
+				relation_id = #relationId#
+			</isNotNull>
+			<isNotNull prepend="and" property="relationName">
+				relation_name = #relationName#
+			</isNotNull>
+			<isNotNull prepend="and" property="relationPhoto">
+				relation_photo = #relationPhoto#
+			</isNotNull>
+			<isNotNull prepend="and" property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="userId">
+				user_id = #userId#
+			</isNotNull>
+			<isNotNull prepend="and" property="uuid">
+				uuid = #uuid#
+			</isNotNull>
+		</dynamic>
+		<dynamic>
+			<isNotNull prepend="order by" property="orderBy">
+				$orderBy$ $order$
+			</isNotNull>
+			<isNotNull prepend="limit" property="limit">
+				$start$,$end$
+			</isNotNull>
+		</dynamic>
+  </select>
+
+  <insert id="insert" parameterClass="user_relation">
+       insert into tb_user_relation
+				(
+				create_id,
+				create_time,
+				relation_id,
+				relation_name,
+				relation_photo,
+				status,
+				update_id,
+				update_time,
+				user_id,
+				uuid
+				)
+				values
+				(
+				#createId#,
+				#createTime#,
+				#relationId#,
+				#relationName#,
+				#relationPhoto#,
+				#status#,
+				#updateId#,
+				#updateTime#,
+				#userId#,
+				#uuid#
+				)
+    <selectKey resultClass="java.lang.String" keyProperty="uuid">
+    	select last_insert_id();
+    </selectKey>
+  </insert>
+
+  <select id="count" resultClass="int">
+  		select count(*) from tb_user_relation
+  		<dynamic prepend="where">
+			<isNotNull prepend="and" property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="and" property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="relationId">
+				relation_id = #relationId#
+			</isNotNull>
+			<isNotNull prepend="and" property="relationName">
+				relation_name = #relationName#
+			</isNotNull>
+			<isNotNull prepend="and" property="relationPhoto">
+				relation_photo = #relationPhoto#
+			</isNotNull>
+			<isNotNull prepend="and" property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="and" property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="and" property="userId">
+				user_id = #userId#
+			</isNotNull>
+			<isNotNull prepend="and" property="uuid">
+				uuid = #uuid#
+			</isNotNull>
+  		</dynamic>
+  </select>
+
+  <update id="update" parameterClass="user_relation">
+	update tb_user_relation
+	set
+	create_id = #createId#,
+	create_time = #createTime#,
+	relation_id = #relationId#,
+	relation_name = #relationName#,
+	relation_photo = #relationPhoto#,
+	status = #status#,
+	update_id = #updateId#,
+	update_time = #updateTime#,
+	user_id = #userId#,
+	uuid = #uuid#
+	where
+	id = #uuid#;
+  </update>
+
+  <update id="updateByMap">
+    update tb_user_relation
+    	<dynamic prepend="set">
+			<isNotNull prepend="," property="createId">
+				create_id = #createId#
+			</isNotNull>
+			<isNotNull prepend="," property="createTime">
+				create_time = #createTime#
+			</isNotNull>
+			<isNotNull prepend="," property="relationId">
+				relation_id = #relationId#
+			</isNotNull>
+			<isNotNull prepend="," property="relationName">
+				relation_name = #relationName#
+			</isNotNull>
+			<isNotNull prepend="," property="relationPhoto">
+				relation_photo = #relationPhoto#
+			</isNotNull>
+			<isNotNull prepend="," property="status">
+				status = #status#
+			</isNotNull>
+			<isNotNull prepend="," property="updateId">
+				update_id = #updateId#
+			</isNotNull>
+			<isNotNull prepend="," property="updateTime">
+				update_time = #updateTime#
+			</isNotNull>
+			<isNotNull prepend="," property="userId">
+				user_id = #userId#
+			</isNotNull>
+			<isNotNull prepend="," property="uuid">
+				uuid = #uuid#
+			</isNotNull>
+    	</dynamic>
+    	where id = #id#
+  </update>
+</sqlMap>
+

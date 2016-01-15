@@ -126,4 +126,32 @@ public class ProjectController {
 		return null;
 	}
 	
+	/** 
+	* 方法说明 :获取所有项目
+	* @author  joker 
+	* 创建时间：2015-12-08
+	* <p>@param </p>
+	*/
+	@RequestMapping("/project/gets")
+	public ModelAndView gets(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value="pageSize", required=false) Integer pageSize,
+			@RequestParam(value="pageNo", required=false) Integer pageNo
+			){
+		try {
+			Map<String, Object> message = new HashMap<String, Object>();
+			response.setCharacterEncoding("utf-8");
+			
+			if("".equals(pageNo) || pageNo == null) pageNo = 1;
+			if("".equals(pageSize) || pageSize == null) pageSize = Page.DEFAULT_PAGE_ROW_COUNT;
+			
+			//获取所有项目
+			List<Project> list = this.projectService.gets(pageSize, pageNo);
+			message.put("projects", list);
+			response.getWriter().write(Result.toJson(true, message, null, null));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
 }

@@ -16,8 +16,8 @@ import java.util.Map;
 
 import org.omg.CORBA.portable.ApplicationException;
 
-import com.api.business.bean.Project;
 import com.api.business.bean.User;
+import com.api.business.bean.UserRelation;
 
 
 /** 
@@ -133,15 +133,15 @@ public class BeanTools {
 		info.append("\n");
 		info.append("<sqlMap namespace=\"").append(bean.getClass().getCanonicalName()).append("\">").append("\n");
 		info.append("\n");
-		info.append("  <typeAlias alias=\"").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\" type=\"").append(bean.getClass().getCanonicalName()).append("\"/>").append("\n");
+		info.append("  <typeAlias alias=\"").append(StringUtils.toLowerCaseFirstOne(bean.getClass().getSimpleName())).append("\" type=\"").append(bean.getClass().getCanonicalName()).append("\"/>").append("\n");
 		info.append("\n");
-		info.append("  <resultMap id=\"").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("Result").append("\" class=\"").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\">").append("\n");
+		info.append("  <resultMap id=\"").append(StringUtils.toLowerCaseFirstOne(bean.getClass().getSimpleName())).append("Result").append("\" class=\"").append(StringUtils.toLowerCaseFirstOne(bean.getClass().getSimpleName())).append("\">").append("\n");
 		for(int i = 0; i < propertis.size(); i++){
 			info.append("    <result property=\"").append(propertis.get(i)).append("\" column=\"").append(StringUtils.toUnderlineName(propertis.get(i))).append("\"/>").append("<!-- ").append(propertisType.get(i)).append(" -->").append("\n");
 		}
 		info.append("  </resultMap>").append("\n");
 		info.append("\n");
-		info.append("  <select id=\"selectById\" resultMap=\"").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("Result").append("\">").append("\n");
+		info.append("  <select id=\"selectById\" resultMap=\"").append(StringUtils.toLowerCaseFirstOne(bean.getClass().getSimpleName())).append("Result").append("\">").append("\n");
 		info.append("    select * from ").append("tb_").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\n");
 		info.append("		<dynamic prepend=\"where\">").append("\n");
 		info.append("			<isParameterPresent>").append("\n");
@@ -150,7 +150,7 @@ public class BeanTools {
 		info.append("		</dynamic>").append("\n");
 		info.append("  </select>").append("\n");
 		info.append("\n");
-		info.append("  <select id=\"selectByMap\" resultMap=\"").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("Result").append("\">").append("\n");
+		info.append("  <select id=\"selectByMap\" resultMap=\"").append(StringUtils.toLowerCaseFirstOne(bean.getClass().getSimpleName())).append("Result").append("\">").append("\n");
 		info.append("    select * from ").append("tb_").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\n");
 		info.append("		<dynamic prepend=\"where\">").append("\n");
 		for(int i = 0; i < propertis.size(); i++){
@@ -169,7 +169,7 @@ public class BeanTools {
 		info.append("		</dynamic>").append("\n");
 		info.append("  </select>").append("\n");
 		info.append("\n");
-		info.append("  <insert id=\"insert\" parameterClass=\"").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\">").append("\n");
+		info.append("  <insert id=\"insert\" parameterClass=\"").append(StringUtils.toLowerCaseFirstOne(bean.getClass().getSimpleName())).append("\">").append("\n");
 		info.append("       insert into ").append("tb_").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\n");
 		info.append("				(").append("\n");
 		for(int i = 0; i < propertis.size(); i++){
@@ -206,7 +206,7 @@ public class BeanTools {
 		info.append("  		</dynamic>").append("\n");
 		info.append("  </select>").append("\n");
 		info.append("\n");
-		info.append("  <update id=\"update\" parameterClass=\"").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\">").append("\n");
+		info.append("  <update id=\"update\" parameterClass=\"").append(StringUtils.toLowerCaseFirstOne(bean.getClass().getSimpleName())).append("\">").append("\n");
 		info.append("	update ").append("tb_").append(StringUtils.toUnderlineName(bean.getClass().getSimpleName())).append("\n");
 		info.append("	set").append("\n");
 		for(int i = 0; i < propertis.size(); i++){
@@ -242,8 +242,11 @@ public class BeanTools {
 	}
 	
 	public static void main(String[] strings) throws Exception{
-		User user = new User();
-		Project project = new Project();
-		BeanTools.createSqlMap(project, "c:\\jokerpu\\test\\");
+//		User user = new User();
+//		Project project = new Project();
+//		UserRelation userRelation = new UserRelation();
+//		Tag tag = new Tag();
+//		TagRelation tagRelation = new TagRelation();
+//		BeanTools.createSqlMap(tagRelation, "c:\\jokerpu\\test\\");
 	}
 }

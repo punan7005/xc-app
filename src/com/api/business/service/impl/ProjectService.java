@@ -63,4 +63,11 @@ public class ProjectService extends GenericService<Project, String> implements I
 		return list;
 	}
 
+	@Override
+	public List<Project> gets(int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		List<Project> list = this.projectDao.pageQueryBy(new String[]{"status"}, new Object[]{0}, "create_time", "desc", pageSize, pageNo);
+		return list;
+	}
+
 }
